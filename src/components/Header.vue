@@ -1,33 +1,44 @@
 <template>
   <div class="header">
-    <div class="header-left">
-      <div class="iconfont back-icon">&#xe624;</div>
-    </div>
-    <div class="header-input">
-      <span class="iconfont">&#xe632;</span>
-      输入城市/景点/游玩主题
-    </div>
-    <div class="header-right">城市</div>
+    sdfsd
   </div>
 </template>
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data () {
+    return {
+      list: [
+        { age: 10, price: 20 },
+        { age: 30, price: 100 },
+        { age: 40, price: 10 },
+        { age: 60, price: 70 }
+      ]
+    }
+  },
+  mounted () {
+    this.changeArra()
+  },
+  methods: {
+    changeArra () {
+      console.log(this.add(this.list))
+    },
+    add (arr) {
+      let obj = {}
+      arr.map(value => {
+        Object.keys(value).map(key => {
+          if (obj[key]) {
+            obj[key] += value[key]
+          } else {
+            obj[key] = value[key]
+          }
+        })
+      })
+      return obj
+    }
+  }
 }
 </script>
 <style scoped lang="stylus">
-  @import "~assets/styls/variable.styl"
-  .header
-    display flex
-    line-height: $headerHeight
-    background: $bgColor
-    color #fff
-    .header-left
-      width 43px
-      float left
-    .header-input
-      flex 1
-    .header-right
-      width 60px
-      float right
+
 </style>
